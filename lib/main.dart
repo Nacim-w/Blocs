@@ -1,8 +1,11 @@
+import 'package:bloc_shop_app/Pages/welcome/bloc/welcome_bloc.dart';
+import 'package:bloc_shop_app/Pages/welcome/welcome.dart';
 import 'package:bloc_shop_app/app_blocs.dart';
 import 'package:bloc_shop_app/app_events.dart';
 import 'package:bloc_shop_app/app_states.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,27 +16,33 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => AppBlocs(),
-      child: const MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: MyHomePage(
-          title: 'Flutter Demo Home Page',
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => AppBlocs(),
         ),
+        BlocProvider(
+          create: (context) => WelcomeBloc(),
+        ),
+      ],
+      child: ScreenUtilInit(
+        builder: (context, child) => MaterialApp(
+            debugShowCheckedModeBanner: false, home: const Welcome(),
+            routes: {
+                "myHomePage": (context) => MyHomePage(),
+            },),
       ),
     );
   }
 }
 
 class MyHomePage extends StatelessWidget {
-  const MyHomePage({super.key, required this.title});
-  final String title;
+  const MyHomePage({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(title),
       ),
       body: Center(
           child: BlocBuilder<AppBlocs, AppStates>(builder: (context, state) {
@@ -54,12 +63,14 @@ class MyHomePage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           FloatingActionButton(
+            heroTag: 'increment',
             onPressed: () =>
                 BlocProvider.of<AppBlocs>(context).add(Increment()),
             tooltip: 'Increment',
             child: const Icon(Icons.add),
           ),
           FloatingActionButton(
+            heroTag: 'decrement',
             onPressed: () =>
                 BlocProvider.of<AppBlocs>(context).add(Decrement()),
             tooltip: 'Decrement',
