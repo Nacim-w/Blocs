@@ -1,3 +1,4 @@
+import 'package:bloc_shop_app/common/values/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -6,7 +7,7 @@ AppBar buildAppBar() {
     bottom: PreferredSize(
       preferredSize: const Size.fromHeight(1.0),
       child: Container(
-        color: Colors.grey.withOpacity(0.5),
+        color: AppColors.primarySecondaryBackground,
         height: 1.0,
       ),
     ),
@@ -14,7 +15,7 @@ AppBar buildAppBar() {
       child: Text(
         "Log In",
         style: TextStyle(
-          color: Colors.black,
+          color: AppColors.primaryText,
           fontSize: 16.sp,
           fontWeight: FontWeight.normal,
         ),
@@ -27,6 +28,7 @@ Widget buildThirtPartyLogin(BuildContext context) {
   return Center(
     child: Container(
       margin: EdgeInsets.only(top: 40.h, bottom: 20.h),
+      padding: EdgeInsets.only(left:25.w,right:25.w),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
@@ -72,7 +74,7 @@ Widget reusableTextField(String hintText, String textType, String iconName) {
     decoration: BoxDecoration(
       color: Colors.grey.withOpacity(0.1),
       borderRadius: BorderRadius.all(Radius.circular(15.w)),
-      border: Border.all(color: Colors.black),
+      border: Border.all(color: AppColors.primaryFourElementText),
     ),
     child: Row(
       children: [
@@ -88,22 +90,25 @@ Widget reusableTextField(String hintText, String textType, String iconName) {
           child: TextField(
             keyboardType: TextInputType.multiline,
             decoration: InputDecoration(
-                hintText: hintText,
-                border: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.transparent),
-                ),
-                enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.transparent),
-                ),
-                disabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.transparent),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.transparent),
-                ),
-                hintStyle: TextStyle(color: Colors.grey.withOpacity(0.5))),
+              hintText: hintText,
+              border: OutlineInputBorder(
+                borderSide: BorderSide(color: Colors.transparent),
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: Colors.transparent),
+              ),
+              disabledBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: Colors.transparent),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: Colors.transparent),
+              ),
+              hintStyle: TextStyle(
+                color: AppColors.primarySecondaryElementText
+              ),
+            ),
             style: TextStyle(
-              color: Colors.black,
+              color: AppColors.primaryText,
               fontFamily: "Avenir",
               fontSize: 14.sp,
               fontWeight: FontWeight.normal,
@@ -127,25 +132,32 @@ Widget forgotPassword(String text) {
       child: Text(
         "Forgot Password",
         style: TextStyle(
-            color: Colors.black,
+            color: AppColors.primaryText,
             decoration: TextDecoration.underline,
-            decorationColor: Colors.blue,
+            decorationColor: AppColors.primaryText,
             fontSize: 12.sp),
       ),
     ),
   );
 }
 
-Widget buildLoginAndRegButton(String buttonName ,String buttonType) {
+Widget buildLoginAndRegButton(String buttonName, String buttonType) {
   return GestureDetector(
     onTap: () {},
     child: Container(
-      margin: EdgeInsets.only(left: 25.w, right: 25.w, top: buttonType=="login"?40.h:20.h),
+      margin: EdgeInsets.only(
+          left: 25.w, right: 25.w, top: buttonType == "login" ? 40.h : 20.h),
       width: 325.w,
       height: 50.h,
       decoration: BoxDecoration(
-          color: Colors.blue,
+          color: buttonType == "login"
+              ? AppColors.primaryElement
+              : AppColors.primaryBackground,
           borderRadius: BorderRadius.circular(15.w),
+          border: Border.all(
+              color: buttonType == "login"
+                  ? Colors.transparent
+                  : AppColors.primaryElementText),
           boxShadow: [
             BoxShadow(
               color: Colors.grey.withOpacity(0.1),
@@ -160,7 +172,9 @@ Widget buildLoginAndRegButton(String buttonName ,String buttonType) {
           style: TextStyle(
               fontSize: 16.sp,
               fontWeight: FontWeight.normal,
-              color: Colors.white),
+              color: buttonType == "login"
+                  ? AppColors.primaryBackground
+                  : AppColors.primaryText),
         ),
       ),
     ),

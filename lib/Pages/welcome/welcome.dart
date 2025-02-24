@@ -1,6 +1,7 @@
 import 'package:bloc_shop_app/Pages/welcome/bloc/welcome_bloc.dart';
 import 'package:bloc_shop_app/Pages/welcome/bloc/welcome_event.dart';
 import 'package:bloc_shop_app/Pages/welcome/bloc/welcome_state.dart';
+import 'package:bloc_shop_app/common/values/colors.dart';
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -32,7 +33,7 @@ class _WelcomeState extends State<Welcome> {
           child: Text(
             title,
             style: TextStyle(
-                color: Colors.black,
+                color: AppColors.primaryText,
                 fontSize: 24.sp,
                 fontWeight: FontWeight.normal),
           ),
@@ -42,7 +43,7 @@ class _WelcomeState extends State<Welcome> {
           child: Text(
             subtitle,
             style: TextStyle(
-                color: Colors.black,
+                color: AppColors.primarySecondaryElementText,
                 fontSize: 14.sp,
                 fontWeight: FontWeight.normal),
           ),
@@ -63,7 +64,7 @@ class _WelcomeState extends State<Welcome> {
             width: 325.w,
             height: 50.h,
             decoration: BoxDecoration(
-                color: Colors.blue,
+                color: AppColors.primaryElement,
                 borderRadius: BorderRadius.circular(15.w),
                 boxShadow: [
                   BoxShadow(
@@ -137,8 +138,8 @@ class _WelcomeState extends State<Welcome> {
                   dotsCount: 3,
                   mainAxisAlignment: MainAxisAlignment.center,
                   decorator: DotsDecorator(
-                    color: Colors.grey,
-                    activeColor: Colors.blue,
+                    color: AppColors.primaryThreeElementText,
+                    activeColor: AppColors.primaryElement,
                     size: const Size.square(8.0),
                     activeSize: const Size(12.0, 8.0),
                     activeShape: RoundedRectangleBorder(
