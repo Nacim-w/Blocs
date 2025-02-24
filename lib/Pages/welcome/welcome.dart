@@ -55,7 +55,7 @@ class _WelcomeState extends State<Welcome> {
                   curve: Curves.easeIn);
             } else {
               Navigator.of(context)
-                  .pushNamedAndRemoveUntil("myHomePage", (route) => false);
+                  .pushNamedAndRemoveUntil("signIn", (route) => false);
             }
           },
           child: Container(

@@ -1,3 +1,4 @@
+import 'package:bloc_shop_app/Pages/sign_in/sign_in.dart';
 import 'package:bloc_shop_app/Pages/welcome/bloc/welcome_bloc.dart';
 import 'package:bloc_shop_app/Pages/welcome/welcome.dart';
 import 'package:bloc_shop_app/app_blocs.dart';
@@ -27,10 +28,19 @@ class MyApp extends StatelessWidget {
       ],
       child: ScreenUtilInit(
         builder: (context, child) => MaterialApp(
-            debugShowCheckedModeBanner: false, home: const Welcome(),
-            routes: {
-                "myHomePage": (context) => MyHomePage(),
-            },),
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData(
+            appBarTheme: AppBarTheme(
+              elevation: 0,
+              backgroundColor: Colors.white,
+            ),
+          ),
+          home: const Welcome(),
+          routes: {
+            "myHomePage": (context) => MyHomePage(),
+            "signIn": (context) => SignIn(),
+          },
+        ),
       ),
     );
   }
