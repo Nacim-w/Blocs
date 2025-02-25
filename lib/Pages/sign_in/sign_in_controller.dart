@@ -1,4 +1,4 @@
-import 'package:bloc_shop_app/Pages/sign_in/bloc/sign_in_blocs.dart';
+import 'package:bloc_shop_app/pages/sign_in/bloc/sign_in_blocs.dart';
 import 'package:bloc_shop_app/common/widgets/flutter_toast.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +10,6 @@ class SignInController {
   Future<void> handleSignIn(String type) async {
     try {
       if (type == "email") {
-        //BlocProvider.of<SignInBloc>(context).state;
         final state = context.read<SignInBloc>().state;
         String emailAddress = state.email;
         String password = state.password;

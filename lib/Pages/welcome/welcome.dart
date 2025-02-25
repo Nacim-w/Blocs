@@ -1,6 +1,6 @@
-import 'package:bloc_shop_app/Pages/welcome/bloc/welcome_bloc.dart';
-import 'package:bloc_shop_app/Pages/welcome/bloc/welcome_event.dart';
-import 'package:bloc_shop_app/Pages/welcome/bloc/welcome_state.dart';
+import 'package:bloc_shop_app/pages/welcome/bloc/welcome_bloc.dart';
+import 'package:bloc_shop_app/pages/welcome/bloc/welcome_event.dart';
+import 'package:bloc_shop_app/pages/welcome/bloc/welcome_state.dart';
 import 'package:bloc_shop_app/common/values/colors.dart';
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
