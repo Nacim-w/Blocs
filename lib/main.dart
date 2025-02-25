@@ -1,4 +1,5 @@
 import 'package:bloc_shop_app/Pages/bloc_providers.dart';
+import 'package:bloc_shop_app/Pages/register/register.dart';
 import 'package:bloc_shop_app/Pages/sign_in/sign_in.dart';
 import 'package:bloc_shop_app/Pages/welcome/welcome.dart';
 import 'package:bloc_shop_app/app_blocs.dart';
@@ -37,6 +38,7 @@ class MyApp extends StatelessWidget {
           routes: {
             "myHomePage": (context) => MyHomePage(),
             "signIn": (context) => SignIn(),
+            "register":(context)=>Register(),
           },
         ),
       ),
