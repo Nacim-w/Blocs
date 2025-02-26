@@ -1,7 +1,4 @@
-import 'package:bloc_shop_app/pages/application/application_page.dart';
-import 'package:bloc_shop_app/pages/bloc_providers.dart';
-import 'package:bloc_shop_app/pages/register/register.dart';
-import 'package:bloc_shop_app/pages/sign_in/sign_in.dart';
+import 'package:bloc_shop_app/common/routes/pages.dart';
 import 'package:bloc_shop_app/common/values/colors.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -20,7 +17,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-      providers: AppBlocProviders.allBlocProviders,
+      providers: [...AppPages.allBlocProviders(context)],
       child: ScreenUtilInit(
         designSize: Size(375, 812),
         builder: (context, child) => MaterialApp(
@@ -34,11 +31,7 @@ class MyApp extends StatelessWidget {
               ),
             ),
           ),
-          home: ApplicationPage(),
-          routes: {
-            "signIn": (context) => SignIn(),
-            "register": (context) => Register(),
-          },
+          onGenerateRoute: AppPages.GenerateRouteSettings,
         ),
       ),
     );
