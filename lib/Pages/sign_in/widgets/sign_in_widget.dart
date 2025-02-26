@@ -28,7 +28,7 @@ Widget buildThirtPartyLogin(BuildContext context) {
   return Center(
     child: Container(
       margin: EdgeInsets.only(top: 40.h, bottom: 20.h),
-      padding: EdgeInsets.only(left:25.w,right:25.w),
+      padding: EdgeInsets.only(left: 25.w, right: 25.w),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
@@ -66,7 +66,8 @@ Widget reusableText(String text) {
   );
 }
 
-Widget reusableTextField(String hintText, String textType, String iconName, void Function(String value )? func) {
+Widget reusableTextField(String hintText, String textType, String iconName,
+    void Function(String value)? func) {
   return Container(
     margin: EdgeInsets.only(bottom: 20.h),
     width: 325.w,
@@ -88,7 +89,7 @@ Widget reusableTextField(String hintText, String textType, String iconName, void
           width: 280.w,
           height: 50.h,
           child: TextField(
-            onChanged: (value)=>func!(value),
+            onChanged: (value) => func!(value),
             keyboardType: TextInputType.multiline,
             decoration: InputDecoration(
               hintText: hintText,
@@ -104,9 +105,8 @@ Widget reusableTextField(String hintText, String textType, String iconName, void
               focusedBorder: OutlineInputBorder(
                 borderSide: BorderSide(color: Colors.transparent),
               ),
-              hintStyle: TextStyle(
-                color: AppColors.primarySecondaryElementText
-              ),
+              hintStyle:
+                  TextStyle(color: AppColors.primarySecondaryElementText),
             ),
             style: TextStyle(
               color: AppColors.primaryText,
@@ -142,7 +142,8 @@ Widget forgotPassword(String text) {
   );
 }
 
-Widget buildLoginAndRegButton(String buttonName, String buttonType,void Function()? func) {
+Widget buildLoginAndRegButton(
+    String buttonName, String buttonType, void Function()? func) {
   return GestureDetector(
     onTap: func,
     child: Container(

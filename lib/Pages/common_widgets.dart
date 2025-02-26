@@ -5,11 +5,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 AppBar buildAppBar(String name) {
   return AppBar(
       bottom: PreferredSize(
+          preferredSize: Size.fromHeight(1.0),
           child: Container(
             color: AppColors.primarySecondaryBackground,
             height: 1.0,
-          ),
-          preferredSize: Size.fromHeight(1.0)),
+          )),
       centerTitle: true,
       title: Text(
         name,
