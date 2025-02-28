@@ -77,7 +77,7 @@ Widget buildTextField(String hintText, String textType, String iconName,
           height: 16.w,
           child: Image.asset("assets/icons/$iconName.png"),
         ),
-        Container(
+        SizedBox(
           width: 280.w,
           height: 50.h,
           child: TextField(

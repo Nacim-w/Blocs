@@ -1,6 +1,9 @@
 import 'package:bloc_shop_app/common/routes/names.dart';
+import 'package:bloc_shop_app/global.dart';
 import 'package:bloc_shop_app/pages/application/application_page.dart';
 import 'package:bloc_shop_app/pages/application/bloc/app_blocs.dart';
+import 'package:bloc_shop_app/pages/home/bloc/home_page_blocs.dart';
+import 'package:bloc_shop_app/pages/home/home_page.dart';
 import 'package:bloc_shop_app/pages/register/bloc/register_bloc.dart';
 import 'package:bloc_shop_app/pages/register/register.dart';
 import 'package:bloc_shop_app/pages/sign_in/bloc/sign_in_blocs.dart';
@@ -48,6 +51,13 @@ class AppPages {
           create: (_) => AppBlocs(),
         ),
       ),
+      PageEntity(
+        route: AppRoutes.HOME_PAGE,
+        page: const HomePage(),
+        bloc: BlocProvider(
+          create: (_) => HomePageBlocs(),
+        ),
+      ),
     ];
   }
 
@@ -63,13 +73,22 @@ class AppPages {
     if (settings.name != null) {
       var result = routes().where((element) => element.route == settings.name);
       if (result.isNotEmpty) {
-        print("valid route name ${settings.name}");
+        print("first log");
+        bool deviceFirstOpen = Global.storageService.getDeviceFirstOpen();
+        if (result.first.route == AppRoutes.INITIAL && deviceFirstOpen) {
+          bool isLoggedIn = Global.storageService.getIsLoggedIn();
+          if (isLoggedIn) {
+            return MaterialPageRoute(
+                builder: (_) => const ApplicationPage(), settings: settings);
+          }
+
+          return MaterialPageRoute(
+              builder: (_) => const SignIn(), settings: settings);
+        }
         return MaterialPageRoute(
             builder: (_) => result.first.page, settings: settings);
       }
     }
-    print("invalid route name ${settings.name}");
-
     return MaterialPageRoute(builder: (_) => SignIn(), settings: settings);
   }
 }

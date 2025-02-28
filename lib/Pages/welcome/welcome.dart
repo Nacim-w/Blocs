@@ -1,3 +1,5 @@
+import 'package:bloc_shop_app/common/values/constant.dart';
+import 'package:bloc_shop_app/global.dart';
 import 'package:bloc_shop_app/pages/welcome/bloc/welcome_bloc.dart';
 import 'package:bloc_shop_app/pages/welcome/bloc/welcome_event.dart';
 import 'package:bloc_shop_app/pages/welcome/bloc/welcome_state.dart';
@@ -55,6 +57,9 @@ class _WelcomeState extends State<Welcome> {
                   duration: const Duration(milliseconds: 400),
                   curve: Curves.easeIn);
             } else {
+              Global.storageService.setBool(
+                  AppConstants.STORAGE_DEVICE_OPEN_FIRST_TIME, true);
+                  print("the value is ${Global.storageService.getDeviceFirstOpen()}");
               Navigator.of(context)
                   .pushNamedAndRemoveUntil("/sign_in", (route) => false);
             }
