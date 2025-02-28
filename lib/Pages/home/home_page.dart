@@ -23,19 +23,44 @@ class _HomePageState extends State<HomePage> {
         builder: (context, state) {
           return Container(
             margin: EdgeInsets.symmetric(vertical: 0, horizontal: 25.w),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                homePageText("hello", color: AppColors.primaryThreeElementText),
-                homePageText("Nacim", top: 5),
-                SizedBox(
-                  height: 20.h,
+            child: CustomScrollView(
+              slivers: [
+                SliverToBoxAdapter(
+                  child: homePageText("Hello",
+                      color: AppColors.primaryThreeElementText),
                 ),
-                searchView(),
-                SizedBox(
-                  height: 20.h,
+                SliverToBoxAdapter(
+                  child: homePageText("Nacim", top: 5),
                 ),
-                slidersView(context, state),
+                SliverPadding(padding: EdgeInsets.only(top: 20.h)),
+                SliverToBoxAdapter(
+                  child: searchView(),
+                ),
+                SliverPadding(padding: EdgeInsets.only(top: 20.h)),
+                SliverToBoxAdapter(
+                  child: slidersView(context, state),
+                ),
+                SliverToBoxAdapter(
+                  child: menuView(),
+                ),
+                SliverPadding(
+                  padding:
+                      EdgeInsets.symmetric(vertical: 18.h, horizontal: 0.w),
+                  sliver: SliverGrid(
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        mainAxisSpacing: 15,
+                        crossAxisSpacing: 15,
+                        childAspectRatio: 1.6),
+                    delegate: SliverChildBuilderDelegate(
+                      childCount: 4,
+                      (context, index) {
+                        return GestureDetector(
+                            onTap: () {}, child: courseGrid());
+                      },
+                    ),
+                  ),
+                ),
               ],
             ),
           );
