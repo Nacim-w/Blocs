@@ -1,4 +1,3 @@
-
 import 'package:bloc_shop_app/pages/sign_in/bloc/sign_in_blocs.dart';
 import 'package:bloc_shop_app/pages/sign_in/bloc/sign_in_events.dart';
 import 'package:bloc_shop_app/pages/sign_in/bloc/sign_in_states.dart';
@@ -56,16 +55,19 @@ class _SignInState extends State<SignIn> {
                           reusableTextField(
                               "Enter your Password", "password", "lock.png",
                               (value) {
-                            context.read<SignInBloc>().add(PasswordChanged(value));
+                            context
+                                .read<SignInBloc>()
+                                .add(PasswordChanged(value));
                           }),
                         ],
                       ),
                     ),
                     forgotPassword("forgot Password"),
-                    buildLoginAndRegButton("Login", "login",(){
-                      SignInController(context: context).handleSignIn("email");
+                    buildLoginAndRegButton("Login", "login", () {
+                      SignInController(context: context)
+                          .handleSignIn("email", context);
                     }),
-                    buildLoginAndRegButton("Register", "register",(){
+                    buildLoginAndRegButton("Register", "register", () {
                       Navigator.of(context).pushNamed("/register");
                     }),
                   ],

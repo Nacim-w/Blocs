@@ -4,12 +4,11 @@ import 'package:bloc_shop_app/pages/sign_in/bloc/sign_in_blocs.dart';
 import 'package:bloc_shop_app/common/widgets/flutter_toast.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SignInController {
   final BuildContext context;
   const SignInController({required this.context});
-  Future<void> handleSignIn(String type) async {
+  Future<void> handleSignIn(String type, context) async {
     try {
       if (type == "email") {
         final state = context.read<SignInBloc>().state;
@@ -40,12 +39,13 @@ class SignInController {
             toastInfo(msg: "User Exists");
             Global.storageService
                 .setString(AppConstants.STORAGE_USER_TOKEN_KEY, "12345678");
+            // TODO: how to resolve this problem below
             Navigator.of(context)
-                .pushNamedAndRemoveUntil("/application", (route) => false);
+                .pushNamedAndRemoveUntil("/application", (_) => false);
             return;
           }
         } on FirebaseAuthException catch (e) {
-          print(e.code);
+          debugPrint(e.code);
           if (e.code == 'invalid-credential') {
             toastInfo(msg: "Invalid credential");
             return;

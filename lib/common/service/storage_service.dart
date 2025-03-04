@@ -3,7 +3,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class StorageService {
   late final SharedPreferences _prefs;
-
+  //main fil main -> globals
+  // TODO: figure out how the storage service is initialized when the project starts
   Future<StorageService> init() async {
     _prefs = await SharedPreferences.getInstance();
     return this;

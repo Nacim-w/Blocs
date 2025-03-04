@@ -7,6 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 Future<void> main() async {
+  //here
   await Global.init();
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();

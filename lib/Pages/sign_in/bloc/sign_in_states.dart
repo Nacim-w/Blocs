@@ -5,6 +5,8 @@ class SignInState {
   SignInState copyWith({String? email, String? password}) {
     return SignInState(
       email: email ?? this.email,
+      //DONE: Null aware Operator
+      // TODO: what is the name of this operator
       password: password ?? this.password,
     );
   }
