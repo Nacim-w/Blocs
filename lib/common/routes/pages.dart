@@ -4,9 +4,11 @@ import 'package:bloc_shop_app/pages/application/application_page.dart';
 import 'package:bloc_shop_app/pages/application/bloc/app_blocs.dart';
 import 'package:bloc_shop_app/pages/home/bloc/home_page_blocs.dart';
 import 'package:bloc_shop_app/pages/home/home_page.dart';
+import 'package:bloc_shop_app/pages/profile/settings/bloc/settings_blocs.dart';
+import 'package:bloc_shop_app/pages/profile/settings/settings_page.dart';
 import 'package:bloc_shop_app/pages/register/bloc/register_bloc.dart';
 import 'package:bloc_shop_app/pages/register/register.dart';
-import 'package:bloc_shop_app/pages/sign_in/bloc/sign_in_blocs.dart';
+import 'package:bloc_shop_app/pages/sign_in/bloc/sign_in_bloc.dart';
 import 'package:bloc_shop_app/pages/sign_in/sign_in.dart';
 import 'package:bloc_shop_app/pages/welcome/bloc/welcome_bloc.dart';
 import 'package:bloc_shop_app/pages/welcome/welcome.dart';
@@ -56,6 +58,13 @@ class AppPages {
         page: const HomePage(),
         bloc: BlocProvider(
           create: (_) => HomePageBlocs(),
+        ),
+      ),
+      PageEntity(
+        route: AppRoutes.SETTINGS,
+        page: const SettingsPage(),
+        bloc: BlocProvider(
+          create: (_) => SettingsBlocs(),
         ),
       ),
     ];

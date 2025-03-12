@@ -4,181 +4,175 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 AppBar buildAppBar() {
   return AppBar(
-    bottom: PreferredSize(
-      preferredSize: const Size.fromHeight(1.0),
-      child: Container(
-        color: AppColors.primarySecondaryBackground,
-        height: 1.0,
-      ),
-    ),
-    title: Center(
-      child: Text(
+      bottom: PreferredSize(
+          child: Container(
+            color: AppColors.primarySecondaryBackground,
+            height: 1.0,
+          ),
+          preferredSize: Size.fromHeight(1.0)),
+      centerTitle: true,
+      title: Text(
         "Log In",
         style: TextStyle(
           color: AppColors.primaryText,
           fontSize: 16.sp,
           fontWeight: FontWeight.normal,
         ),
-      ),
-    ),
-  );
+      ));
 }
 
-Widget buildThirtPartyLogin(BuildContext context) {
-  return Center(
-    child: Container(
+Widget buildThirdPartyLogin(BuildContext context) {
+  return Container(
       margin: EdgeInsets.only(top: 40.h, bottom: 20.h),
-      padding: EdgeInsets.only(left: 25.w, right: 25.w),
+      padding: EdgeInsets.only(left: 0.w, right: 0.w),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          _reusableIcons("google.png"),
-          _reusableIcons("apple.png"),
-          _reusableIcons("facebook.png"),
+          _reusableIcons("google"),
+          _reusableIcons("apple"),
+          _reusableIcons("facebook"),
         ],
-      ),
-    ),
-  );
+      ));
 }
 
 Widget _reusableIcons(String iconName) {
   return GestureDetector(
-    onTap: () {},
     child: SizedBox(
-      width: 40.w,
-      height: 40.h,
-      child: Image.asset("assets/icons/$iconName"),
-    ),
+        width: 40.w,
+        height: 40.w,
+        child: Image.asset("assets/icons/$iconName.png", fit: BoxFit.fill)),
+    onTap: () {},
   );
 }
 
 Widget reusableText(String text) {
   return Container(
-    margin: EdgeInsets.only(top: 20.h),
+    margin: EdgeInsets.only(bottom: 5.h, top: 20.h),
     child: Text(
       text,
+      textAlign: TextAlign.center,
       style: TextStyle(
-        color: Colors.grey.withOpacity(0.5),
-        fontSize: 14.sp,
+        color: AppColors.primaryThreeElementText,
         fontWeight: FontWeight.normal,
+        fontSize: 14.sp,
       ),
     ),
   );
 }
 
-Widget reusableTextField(String hintText, String textType, String iconName,
-    void Function(String value)? func) {
+Widget buildTextField(String hintText, String textType, String iconName,
+    Function(String value)? changed) {
   return Container(
-    margin: EdgeInsets.only(bottom: 20.h),
     width: 325.w,
     height: 50.h,
     decoration: BoxDecoration(
-      color: Colors.grey.withOpacity(0.1),
-      borderRadius: BorderRadius.all(Radius.circular(15.w)),
-      border: Border.all(color: AppColors.primaryFourElementText),
-    ),
+        color: Colors.white,
+        borderRadius: BorderRadius.all(Radius.circular(15.w)),
+        border: Border.all(color: AppColors.primaryThreeElementText)),
     child: Row(
       children: [
         Container(
           margin: EdgeInsets.only(left: 17.w),
           width: 16.w,
-          height: 16.h,
-          child: Image.asset("assets/icons/$iconName"),
+          height: 16.w,
+          child: Image.asset("assets/icons/$iconName.png"),
         ),
-        SizedBox(
+        Container(
           width: 280.w,
           height: 50.h,
           child: TextField(
-            onChanged: (value) => func!(value),
             keyboardType: TextInputType.multiline,
+            onChanged: changed,
             decoration: InputDecoration(
               hintText: hintText,
+              contentPadding: EdgeInsets.fromLTRB(5, 0, 5, 0),
               border: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.transparent),
+                borderSide: BorderSide(
+                  color: Colors.transparent,
+                ),
               ),
               enabledBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.transparent),
+                borderSide: BorderSide(
+                  color: Colors.transparent,
+                ),
               ),
               disabledBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.transparent),
+                borderSide: BorderSide(
+                  color: Colors.transparent,
+                ),
               ),
               focusedBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.transparent),
+                borderSide: BorderSide(
+                  color: Colors.transparent,
+                ),
               ),
-              hintStyle:
-                  TextStyle(color: AppColors.primarySecondaryElementText),
+              hintStyle: TextStyle(
+                color: Colors.grey,
+              ),
             ),
             style: TextStyle(
               color: AppColors.primaryText,
               fontFamily: "Avenir",
-              fontSize: 14.sp,
               fontWeight: FontWeight.normal,
+              fontSize: 12.sp,
             ),
             autocorrect: false,
             obscureText: textType == "password" ? true : false,
           ),
-        ),
+        )
       ],
     ),
   );
 }
 
-Widget forgotPassword(String text) {
+Widget forgotPassword() {
   return Container(
-    margin: EdgeInsets.only(left: 25.w),
     width: 260.w,
     height: 44.h,
     child: GestureDetector(
-      onTap: () {},
-      child: Text(
-        "Forgot Password",
-        style: TextStyle(
+        child: Text(
+          "Forgot password?",
+          textAlign: TextAlign.left,
+          style: TextStyle(
             color: AppColors.primaryText,
             decoration: TextDecoration.underline,
-            decorationColor: AppColors.primaryText,
-            fontSize: 12.sp),
-      ),
-    ),
+            decorationColor: AppColors.primaryElement,
+            fontWeight: FontWeight.normal,
+            fontSize: 12.sp,
+          ),
+        ),
+        onTap: () {}),
   );
 }
 
-Widget buildLoginAndRegButton(
-    String buttonName, String buttonType, void Function()? func) {
+Widget buildLogInAndRegButton(
+    String buttonName, String buttonType, Function()? func) {
   return GestureDetector(
-    onTap: func,
-    child: Container(
-      margin: EdgeInsets.only(
-          left: 25.w, right: 25.w, top: buttonType == "login" ? 40.h : 20.h),
-      width: 325.w,
-      height: 50.h,
-      decoration: BoxDecoration(
-          color: buttonType == "login"
-              ? AppColors.primaryElement
-              : AppColors.primaryBackground,
-          borderRadius: BorderRadius.circular(15.w),
-          border: Border.all(
+      child: Container(
+          width: 325.w,
+          height: 50.h,
+          margin: EdgeInsets.only(
+              top: buttonType == "login" ? 40.h : 20.h, left: 0.w, right: 0.w),
+          decoration: BoxDecoration(
               color: buttonType == "login"
-                  ? Colors.transparent
-                  : AppColors.primaryElementText),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey.withAlpha(25),
-              spreadRadius: 1,
-              blurRadius: 2,
-              offset: Offset(0, 1),
-            )
-          ]),
-      child: Center(
-        child: Text(
-          buttonName,
-          style: TextStyle(
-              fontSize: 16.sp,
+                  ? AppColors.primaryElement
+                  : AppColors.primaryBackground,
+              borderRadius: BorderRadius.all(Radius.circular(15.w)),
+              border: Border.all(
+                  color: buttonType == "login"
+                      ? Colors.transparent
+                      : AppColors.primaryFourElementText)),
+          child: Center(
+              child: Text(
+            buttonName,
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              color: buttonType == "login"
+                  ? AppColors.primaryElementText
+                  : AppColors.primaryText,
               fontWeight: FontWeight.normal,
-              color: buttonType == "login"
-                  ? AppColors.primaryBackground
-                  : AppColors.primaryText),
-        ),
-      ),
-    ),
-  );
+              fontSize: 16.sp,
+            ),
+          ))),
+      onTap: func);
 }

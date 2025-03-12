@@ -5,11 +5,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 AppBar buildAppBar(String name) {
   return AppBar(
       bottom: PreferredSize(
-          preferredSize: Size.fromHeight(1.0),
           child: Container(
             color: AppColors.primarySecondaryBackground,
             height: 1.0,
-          )),
+          ),
+          preferredSize: Size.fromHeight(1.0)),
       centerTitle: true,
       title: Text(
         name,
@@ -23,17 +23,16 @@ AppBar buildAppBar(String name) {
 
 Widget buildThirdPartyLogin(BuildContext context) {
   return Container(
-    margin: EdgeInsets.only(top: 40.h, bottom: 20.h),
-    padding: EdgeInsets.only(left: 0.w, right: 0.w),
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
-      children: [
-        _reusableIcons("google"),
-        _reusableIcons("apple"),
-        _reusableIcons("facebook"),
-      ],
-    ),
-  );
+      margin: EdgeInsets.only(top: 40.h, bottom: 20.h),
+      padding: EdgeInsets.only(left: 0.w, right: 0.w),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          _reusableIcons("google"),
+          _reusableIcons("apple"),
+          _reusableIcons("facebook"),
+        ],
+      ));
 }
 
 Widget _reusableIcons(String iconName) {
@@ -48,10 +47,7 @@ Widget _reusableIcons(String iconName) {
 
 Widget reusableText(String text) {
   return Container(
-    margin: EdgeInsets.only(
-      bottom: 5.h,
-      top: 20.h,
-    ),
+    margin: EdgeInsets.only(bottom: 5.h, top: 20.h),
     child: Text(
       text,
       textAlign: TextAlign.center,
@@ -71,9 +67,7 @@ Widget buildTextField(String hintText, String textType, String iconName,
     height: 50.h,
     decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.all(
-          Radius.circular(15.w),
-        ),
+        borderRadius: BorderRadius.all(Radius.circular(15.w)),
         border: Border.all(color: AppColors.primaryThreeElementText)),
     child: Row(
       children: [
@@ -83,7 +77,7 @@ Widget buildTextField(String hintText, String textType, String iconName,
           height: 16.w,
           child: Image.asset("assets/icons/$iconName.png"),
         ),
-        SizedBox(
+        Container(
           width: 280.w,
           height: 50.h,
           child: TextField(
@@ -132,7 +126,7 @@ Widget buildTextField(String hintText, String textType, String iconName,
 }
 
 Widget forgotPassword() {
-  return SizedBox(
+  return Container(
     width: 260.w,
     height: 44.h,
     child: GestureDetector(
@@ -154,7 +148,6 @@ Widget forgotPassword() {
 Widget buildLogInAndRegButton(
     String buttonName, String buttonType, Function()? func) {
   return GestureDetector(
-      onTap: func,
       child: Container(
           width: 325.w,
           height: 50.h,
@@ -180,5 +173,6 @@ Widget buildLogInAndRegButton(
               fontWeight: FontWeight.normal,
               fontSize: 16.sp,
             ),
-          ))));
+          ))),
+      onTap: func);
 }
