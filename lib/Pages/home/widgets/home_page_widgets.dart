@@ -1,4 +1,5 @@
 import 'package:bloc_shop_app/common/values/colors.dart';
+import 'package:bloc_shop_app/common/widgets/base_text_widget.dart';
 import 'package:bloc_shop_app/pages/home/bloc/home_page_blocs.dart';
 import 'package:bloc_shop_app/pages/home/bloc/home_page_events.dart';
 import 'package:bloc_shop_app/pages/home/bloc/home_page_states.dart';
@@ -214,17 +215,6 @@ Widget menuView() {
             ],
           )),
     ],
-  );
-}
-
-Widget reusableText(String text,
-    {Color color = AppColors.primaryText,
-    int fontSize = 16,
-    FontWeight fontWeight = FontWeight.bold}) {
-  return Text(
-    text,
-    style: TextStyle(
-        color: color, fontWeight: FontWeight.bold, fontSize: fontSize.sp),
   );
 }
 

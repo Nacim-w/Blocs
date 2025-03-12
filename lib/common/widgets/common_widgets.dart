@@ -148,31 +148,38 @@ Widget forgotPassword() {
 Widget buildLogInAndRegButton(
     String buttonName, String buttonType, Function()? func) {
   return GestureDetector(
-      child: Container(
-          width: 325.w,
-          height: 50.h,
-          margin: EdgeInsets.only(
-              top: buttonType == "login" ? 40.h : 20.h, left: 0.w, right: 0.w),
-          decoration: BoxDecoration(
-              color: buttonType == "login"
-                  ? AppColors.primaryElement
-                  : AppColors.primaryBackground,
-              borderRadius: BorderRadius.all(Radius.circular(15.w)),
-              border: Border.all(
-                  color: buttonType == "login"
-                      ? Colors.transparent
-                      : AppColors.primaryFourElementText)),
-          child: Center(
-              child: Text(
-            buttonName,
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              color: buttonType == "login"
-                  ? AppColors.primaryElementText
-                  : AppColors.primaryText,
-              fontWeight: FontWeight.normal,
-              fontSize: 16.sp,
-            ),
-          ))),
-      onTap: func);
+    onTap: func,
+    child: Container(
+      width: 325.w,
+      height: 50.h,
+      margin: EdgeInsets.only(
+          top: buttonType == "login" ? 40.h : 20.h, left: 0.w, right: 0.w),
+      decoration: BoxDecoration(
+        color: buttonType == "login"
+            ? AppColors.primaryElement
+            : AppColors.primaryBackground,
+        borderRadius: BorderRadius.all(
+          Radius.circular(15.w),
+        ),
+        border: Border.all(
+          color: buttonType == "login"
+              ? Colors.transparent
+              : AppColors.primaryFourElementText,
+        ),
+      ),
+      child: Center(
+        child: Text(
+          buttonName,
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            color: buttonType == "login"
+                ? AppColors.primaryElementText
+                : AppColors.primaryText,
+            fontWeight: FontWeight.normal,
+            fontSize: 16.sp,
+          ),
+        ),
+      ),
+    ),
+  );
 }

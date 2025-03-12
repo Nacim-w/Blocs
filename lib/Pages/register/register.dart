@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../common_widgets.dart';
+import '../../common/widgets/common_widgets.dart';
 
 class Register extends StatefulWidget {
   const Register({super.key});
